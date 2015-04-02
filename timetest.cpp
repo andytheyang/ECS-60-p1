@@ -43,5 +43,7 @@ int main()
 
   } while (input);  // while input != 0
 
+  ifs.close();		// close filestream
+
   return 0;
 }
