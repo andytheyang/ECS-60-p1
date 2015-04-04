@@ -15,7 +15,21 @@ vector<CursorNode <int> > cursorSpace(250000);
 using namespace std;
 
 void RunList(char *filename) {
+    
+    char character, num[250000];
+    int value;
+    
+    List <int> list;
+    ListItr <int> iter = list.zeroth();
     ifstream inf(filename);
+    inf.getline(num, 250000);
+    inf.ignore(2560, '\n');
+    while(inf>>character>>value){
+        if(character == 'i')
+            list.insert(value, iter);
+        else
+            list.remove(value);
+    }
     inf.close();
 }
 
@@ -28,7 +42,22 @@ void RunStackAr(char *filename) {
 }
 
 void RunStackLi(char *filename) {
-    ifstream inf(filename);
+    //    StackLi <int> list;
+    //    ifstream inf(filename);
+    //    char character, num;
+    //    int value;
+    //    while(inf>>character>>num){
+    //        list.push(num);
+    //        if(character == 'i')
+    //            list.push(num);
+    //        else
+    //            list.pop();
+    //    }
+    //    for(int i=0;i<250000;i++){
+    //
+    //        list.pop();
+    //    }
+    
 }
 
 void RunQueueAr(char *filename) {
@@ -36,7 +65,22 @@ void RunQueueAr(char *filename) {
 }
 
 void RunSkipList(char *filename) {
+    
+    char character, num[250000];
+    int value;
+    
+    SkipList<int> list(250000);
     ifstream inf(filename);
+    inf.getline(num, 250000);
+    inf.ignore(2560, '\n');
+    while(inf>>character>>value){
+        if(character == 'i')
+            list.insert(value);
+        else
+            list.deleteNode(value);
+    }
+    inf.close();
+    
 }
 
 int getChoice(){
