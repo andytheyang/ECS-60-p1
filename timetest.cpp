@@ -24,13 +24,14 @@ void RunList(char *filename) {
     ifstream inf(filename);
     inf.getline(num, 250000);
     inf.ignore(2560, '\n');
-    while(inf>>character>>value){
+    while(inf >> character >> value){
         if(character == 'i')
             list.insert(value, iter);
         else
             list.remove(value);
+        list.first();
     }
-    inf.close();
+    //inf.close();
 }
 
 void RunCursorList(char *filename) {
