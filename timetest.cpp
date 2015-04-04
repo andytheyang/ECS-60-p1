@@ -17,14 +17,12 @@ using namespace std;
 int main()
 {
     cout << "Filename >> ";
-    string filename;
+    char filename[10];
     int input;
-    getline(cin, filename);
-    ifstream ifs("filename");
-    ifs.ignore(2560, '\n');     // ignore first comment line
+    cin >> filename;
+    CPUTimer ct;
     
     //Display the initial menu/
-    
     cout << endl;
     cout<< "ADT Menu" << endl;
     cout<< "0. Quit" << endl;
@@ -38,7 +36,6 @@ int main()
     cin >> input;
     
     //While and if statements if the input isn't correct.
-    
     while(input < 0 || input > 6){
         if (input<0 || input > 6) {
             cout << "Your choice is not between 1 and 6." << endl;
@@ -56,23 +53,23 @@ int main()
             cin >> input;
         }
     }
-//    do
-//    {
-//        choice = getChoice();
-//        ct.reset();
-//        switch (choice)
-//        {
-//            case 1: RunList(filename); break;
-//            case 2: RunCursorList(filename); break;
-//            case 3: RunStackAr(filename); break;
-//            case 4: RunStackLi(filename); break;
-//            case 5: RunQueueAr(filename); break;
-//            case 6: RunSkipList(filename); break;
-//        }
-//        cout << "CPU time: " << ct.cur_CPUTime() << endl;
-//    } while(choice > 0);
-    ifs.close();		// close filestream
-
+    
+    if (input > 0){
+        ct.reset();
+        switch (input)
+        {
+            case 1: RunList(filename); break;
+            case 2: RunCursorList(filename); break;
+            case 3: RunStackAr(filename); break;
+            case 4: RunStackLi(filename); break;
+            case 5: RunQueueAr(filename); break;
+            case 6: RunSkipList(filename); break;
+        }
+        cout << "CPU time: " << ct.cur_CPUTime() << endl;
+    }
+    else{
+        cout << "CPU time: " << 0 << endl;
+    }
     return 0;
 }
 
