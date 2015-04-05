@@ -19,18 +19,20 @@ int main(int argc, char *argv[])
   containerStack cStack;
 
   short bag;
-  container currentContainer(size);	// set container size
+  container *currentContainer = new container(size);	// set container size
 
   while (inf >> bag)
   {
-    if (!currentContainer.isFull())	// if space
+    if (!currentContainer->isFull())	// if space
     {
-      currentContainer.enqueue(bag);
+      currentContainer->enqueue(bag);
     }
     else
     {
-      cStack.push(currentContainer);	// add to stack
-      // make a new container
+      container out(*currentContainer);
+      cStack.push(out);	// add to stack
+      delete currentContainer;
+      currentContainer = new container(size);
     }
   }  // while all bags
 
