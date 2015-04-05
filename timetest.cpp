@@ -16,14 +16,15 @@ using namespace std;
 
 void RunList(char *filename) {
     
-    char character, num[250000];
+    char character;
     int value;
-    
+
     List <int> list;
     ListItr <int> iter = list.zeroth();
     ifstream inf(filename);
-    inf.getline(num, 250000);
     inf.ignore(2560, '\n');
+//    inf.getline(num, 250000);
+    
     while(inf >> character >> value){
         if(character == 'i')
             list.insert(value, iter);
@@ -31,63 +32,109 @@ void RunList(char *filename) {
             list.remove(value);
         list.first();
     }
-    //inf.close();
+    inf.close();
 }
 
 void RunCursorList(char *filename) {
+
     ifstream inf(filename);
+    inf.ignore(2560, '\n');
+    char character;
+    int value;
+
+    CursorList<int> list(cursorSpace);
+    CursorListItr<int> iter = list.zeroth();
+
+    while (inf >> character >> value)
+    {
+        if(character == 'i')
+           list.insert(value, iter);
+        else
+           list.remove(value);
+    }
+
+    inf.close();
 }
 
 void RunStackAr(char *filename) {
     ifstream inf(filename);
+    inf.ignore(2560, '\n');
+    char character;
+    int value;
+
+    StackAr<int> list(250000);
+
+    while (inf >> character >> value)
+    {
+        if(character == 'i')
+           list.push(value);
+        else
+           list.pop();
+    }
+
+    inf.close();
 }
 
 void RunStackLi(char *filename) {
-    //    StackLi <int> list;
-    //    ifstream inf(filename);
-    //    char character, num;
-    //    int value;
-    //    while(inf>>character>>num){
-    //        list.push(num);
-    //        if(character == 'i')
-    //            list.push(num);
-    //        else
-    //            list.pop();
-    //    }
-    //    for(int i=0;i<250000;i++){
-    //
-    //        list.pop();
-    //    }
-    
+        StackLi <int> list;
+        ifstream inf(filename);
+        inf.ignore(2560, '\n');
+        char character;
+        int value;
+
+        while(inf >> character >> value){
+            if(character == 'i')
+               list.push(value);
+            else
+               list.pop();
+        }
+
+        inf.close(); 
 }
 
 void RunQueueAr(char *filename) {
-    ifstream inf(filename);
+        Queue<int> que(250000);
+        ifstream inf(filename);
+        inf.ignore(2560, '\n');
+
+        char character;
+        int value;
+
+        while(inf >> character >> value){
+            if(character == 'i')
+               que.enqueue(value);
+            else
+               que.dequeue();
+        }
+
+        inf.close(); 
+
 }
 
 void RunSkipList(char *filename) {
     
-    char character, num[250000];
+    char character;
     int value;
     
-    SkipList<int> list(250000);
+    SkipList<int> list(1, 250000);	// what's going on??
     ifstream inf(filename);
-    inf.getline(num, 250000);
     inf.ignore(2560, '\n');
-    while(inf>>character>>value){
+
+    while(inf >> character >> value){
         if(character == 'i')
             list.insert(value);
         else
             list.deleteNode(value);
     }
+
     inf.close();
-    
+
 }
 
 int getChoice(){
     int input;
     cout << endl;
-    cout<< "ADT Menu" << endl;
+    cout<< "      ADT Menu" << endl;
     cout<< "0. Quit" << endl;
     cout<< "1. LinkedList" << endl;
     cout<< "2. CursorList" << endl;
@@ -97,6 +144,14 @@ int getChoice(){
     cout<< "6. SkipList" << endl;
     cout<< "Your Choice >> ";
     cin >> input;
+
+    if (input < 0 || input > 6)
+    {
+      cout << "Your choice is not between 1 and 6." << endl
+           << "Please try again." << endl;
+      return getChoice();
+    }
+
     return input;
 }
 
@@ -113,6 +168,7 @@ int main()
     {
         choice = getChoice();
         ct.reset();
+
         switch (choice)
         {
             case 1: RunList(filename);       break;
@@ -122,6 +178,7 @@ int main()
             case 5: RunQueueAr(filename);    break;
             case 6: RunSkipList(filename);   break;
         }
+
         cout << "CPU time: " << ct.cur_CPUTime() << endl;
     } while(choice > 0);
     
