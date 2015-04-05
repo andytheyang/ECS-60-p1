@@ -9,8 +9,8 @@
 
 using namespace std;
 
-typedef QueueAr<short> container;
-typedef StackAr<QueueAr<short> > containerStack;
+typedef Queue<short> container;
+typedef StackAr<container> containerStack;
 
 int main(int argc, char *argv[])
 {
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
   {
     if (!currentContainer.isFull())	// if space
     {
-      currentContainer.push(bag);
+      currentContainer.enqueue(bag);
     }
     else
     {

@@ -1,0 +1,4 @@
+bags.cpp: In function ‘int main(int, char**)’:
+bags.cpp:28:24: error: ‘container’ has no member named ‘push’
+       currentContainer.push(bag);
+                        ^
