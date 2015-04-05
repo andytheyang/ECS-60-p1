@@ -23,18 +23,23 @@ int main(int argc, char *argv[])
 
   while (inf >> bag)
   {
-    if (!currentContainer->isFull())	// if space
+    if (currentContainer->isFull())	// is full
     {
-      currentContainer->enqueue(bag);
-    }
-    else
-    {
+//      cout << "container is full" << endl;
       container out(*currentContainer);
       cStack.push(out);	// add to stack
       delete currentContainer;
       currentContainer = new container(size);
     }
+
+    if (!currentContainer->isFull())
+    {
+      currentContainer->enqueue(bag);
+//      cout << bag << " has been added" << endl;
+    }
   }  // while all bags
+
+  cStack.push(*currentContainer);
 
   while (!cStack.isEmpty())
   {
@@ -43,6 +48,8 @@ int main(int argc, char *argv[])
     while (!unloaded.isEmpty())
       cout << unloaded.dequeue() << " ";
   }  // while there are more containers
+
+  cout << endl;
 
    return 0;
 }  // main()
