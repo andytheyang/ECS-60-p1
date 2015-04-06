@@ -4,7 +4,6 @@
 #include <iostream>
 #include <fstream>
 #include "StackAr.h"
-#include <cstring>
 
 using namespace std;
 
@@ -23,8 +22,21 @@ int main(int argc, char *argv[])
 
   while (inf >> next)
   {
-//    if (next == '/' && inf.peek() == '*')	// is a comment
-//      ignore = true;
+/*
+    if (next == '/' && inf.peek() == '*')	// is a comment
+    {
+      ignore = true;
+      stack.push(next);
+      inf >> next;			// to ignore the *
+      continue;
+    }  // if comment
+
+    if (next == '*' && inf.peek() == '/')	// is close comment
+      
+
+    if (ignore)
+      continue;
+*/
     if (next == '{' || next == '(' || next == '[')
     {
       lastLine = curLine;
