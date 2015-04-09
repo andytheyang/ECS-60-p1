@@ -4,13 +4,13 @@
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
-#include "StackAr.h"
+#include "StackLi.h"
 #include "QueueAr.h"
 
 using namespace std;
 
 typedef Queue<short> container;
-typedef StackAr<container> containerStack;
+typedef StackLi<container> containerStack;
 
 int main(int argc, char *argv[])
 {
