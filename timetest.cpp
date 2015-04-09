@@ -23,7 +23,6 @@ void RunList(char *filename) {
     ListItr <int> iter = list.zeroth();
     ifstream inf(filename);
     inf.ignore(2560, '\n');
-//    inf.getline(num, 250000);
     
     while(inf >> character >> value){
         if(character == 'i')

@@ -1,5 +1,5 @@
 // Author: Andy Yang
-// Author: Manu Sodhi
+// Author: Manvinder Sodhi
 
 #include <iostream>
 #include <fstream>

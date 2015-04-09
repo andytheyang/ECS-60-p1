@@ -1,5 +1,5 @@
 // Author: Andy Yang
-// Author: Manu Sodhi
+// Author: Manvinder Sodhi
 
 #include <iostream>
 #include <cstdlib>
@@ -25,7 +25,6 @@ int main(int argc, char *argv[])
   {
     if (currentContainer->isFull())	// is full
     {
-//      cout << "container is full" << endl;
       container out(*currentContainer);
       cStack.push(out);	// add to stack
       delete currentContainer;
@@ -35,7 +34,6 @@ int main(int argc, char *argv[])
     if (!currentContainer->isFull())
     {
       currentContainer->enqueue(bag);
-//      cout << bag << " has been added" << endl;
     }
   }  // while all bags
 
