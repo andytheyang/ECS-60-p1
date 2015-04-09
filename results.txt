@@ -40,24 +40,15 @@ OK
  
 balance.cpp operation testing:
 balance1.txt: 
-Yours:
 OK
-Sean's:
-Unmatched /* on line #2
 balance2.txt: 
-Yours:
 OK
-Sean's:
-Unmatched */ on line #2
 balance3.txt: 
 OK
 balance4.txt: 
-Yours:
-Unmatched } on line #2
-Sean's:
-Unmatched ) on line #3
+OK
 balance5.txt: 
 OK
 
-timetest.cpp score: 5, bags.cpp score: 10, balance.cpp score: 4
-Total score: 19
+timetest.cpp score: 5, bags.cpp score: 10, balance.cpp score: 10
+Total score: 25

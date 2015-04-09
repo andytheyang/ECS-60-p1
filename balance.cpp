@@ -17,26 +17,37 @@ int main(int argc, char *argv[])
   ifstream inf(argv[1]);
   StackAr<char> stack;
   char next;
-  bool ignore = false;
   int curLine = 1, lastLine = 1;
 
   while (inf >> next)
   {
-/*
     if (next == '/' && inf.peek() == '*')	// is a comment
     {
-      ignore = true;
-      stack.push(next);
-      inf >> next;			// to ignore the *
-      continue;
-    }  // if comment
+      lastLine = curLine;
+      bool exit = false;
+      while (inf >> next)
+      {
+        if (next == '*' && inf.peek() == '/')	// is close comment
+        {
+          exit = true;
+          break;
+        }
+      }
+
+      if (exit)
+        continue;
+
+      cout << "Unmatched /* on line #" << curLine << endl;
+      return 1;
+    }  // if comment 
 
     if (next == '*' && inf.peek() == '/')	// is close comment
-      
+    {
+      lastLine = curLine;
+      cout << "Unmatched */ on line #" << curLine << endl;
+      return 1;
+    }
 
-    if (ignore)
-      continue;
-*/
     if (next == '{' || next == '(' || next == '[')
     {
       lastLine = curLine;
